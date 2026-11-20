@@ -1,5 +1,12 @@
 target/
-*.class
+.env
+.env.*
+!.env.example
+Wallet*/
+wallet*/
+*.jks
+*.p12
+*.sso
 *.log
-.vscode/
 .idea/
+.vscode/

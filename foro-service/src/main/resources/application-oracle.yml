@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: ${FORO_DB_URL}
+    username: ${FORO_DB_USER}
+    password: ${FORO_DB_PASSWORD}
+    driver-class-name: oracle.jdbc.OracleDriver
+  jpa:
+    database-platform: org.hibernate.dialect.OracleDialect

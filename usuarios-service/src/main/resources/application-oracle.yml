@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: ${USUARIOS_DB_URL}
+    username: ${USUARIOS_DB_USER}
+    password: ${USUARIOS_DB_PASSWORD}
+    driver-class-name: oracle.jdbc.OracleDriver
+  jpa:
+    database-platform: org.hibernate.dialect.OracleDialect
