@@ -1,0 +1,50 @@
+Comando: mvn -B -ntp clean install -Dmaven.compiler.release= -Dmaven.compiler.source=17 -Dmaven.compiler.target=17
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< cl.duoc.foro:foro-archetype >---------------------
+[INFO] Building foro-archetype 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------[ maven-archetype ]---------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ foro-archetype ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ foro-archetype ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 13 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ foro-archetype ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 2 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- archetype:3.4.1:jar (default-jar) @ foro-archetype ---
+[INFO] Building archetype jar: /workspace/scratch/466cd3ba77a9/Exp2_S5_Pablo_Fuentes/arquetipo/foro-archetype/target/foro-archetype-1.0.0.jar
+[INFO] Building jar: /workspace/scratch/466cd3ba77a9/Exp2_S5_Pablo_Fuentes/arquetipo/foro-archetype/target/foro-archetype-1.0.0.jar
+[INFO] 
+[INFO] --- archetype:3.4.1:integration-test (default-integration-test) @ foro-archetype ---
+[INFO] Processing Archetype IT project: basic
+[INFO] ----------------------------------------------------------------------------
+[INFO] Using following parameters for creating project from Archetype: foro-archetype:1.0.0
+[INFO] ----------------------------------------------------------------------------
+[INFO] Parameter: groupId, Value: archetype.it
+[INFO] Parameter: artifactId, Value: basic
+[INFO] Parameter: version, Value: 0.1-SNAPSHOT
+[INFO] Parameter: package, Value: it.pkg
+[INFO] Parameter: packageInPathFormat, Value: it/pkg
+[INFO] Parameter: package, Value: it.pkg
+[INFO] Parameter: groupId, Value: archetype.it
+[INFO] Parameter: artifactId, Value: basic
+[INFO] Parameter: version, Value: 0.1-SNAPSHOT
+[INFO] Project created from Archetype in dir: /workspace/scratch/466cd3ba77a9/Exp2_S5_Pablo_Fuentes/arquetipo/foro-archetype/target/test-classes/projects/basic/project/basic
+[INFO] 
+[INFO] --- install:3.1.4:install (default-install) @ foro-archetype ---
+[INFO] Installing /workspace/scratch/466cd3ba77a9/Exp2_S5_Pablo_Fuentes/arquetipo/foro-archetype/pom.xml to /home/agent/.m2/repository/cl/duoc/foro/foro-archetype/1.0.0/foro-archetype-1.0.0.pom
+[INFO] Installing /workspace/scratch/466cd3ba77a9/Exp2_S5_Pablo_Fuentes/arquetipo/foro-archetype/target/foro-archetype-1.0.0.jar to /home/agent/.m2/repository/cl/duoc/foro/foro-archetype/1.0.0/foro-archetype-1.0.0.jar
+[INFO] 
+[INFO] --- archetype:3.4.1:update-local-catalog (default-update-local-catalog) @ foro-archetype ---
+[INFO] Updated local archetypes catalog /home/agent/.m2/repository/archetype-catalog.xml
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  14.776 s
+[INFO] Finished at: 2026-11-20T13:55:11-03:00
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,1 @@
+CREATE TABLE us_reset_tokens (hash VARCHAR2(64 CHAR) PRIMARY KEY, usuario_id NUMBER(19,0) NOT NULL REFERENCES us_usuarios(id), expira TIMESTAMP(6) WITH TIME ZONE NOT NULL);

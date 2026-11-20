@@ -1,0 +1,304 @@
+(node:156) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+(Use `node --trace-deprecation ...` to show where the warning was created)
+newman
+
+DSY2205 Foro academico
+
+→ 01 Salud usuarios
+  GET http://127.0.0.1:8081/actuator/health [200 OK, 466B, 24ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+
+→ 02 Salud foro
+  GET http://127.0.0.1:8082/actuator/health [200 OK, 466B, 8ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+
+→ 03 Login admin
+  POST http://127.0.0.1:8081/api/auth/login [200 OK, 742B, 407ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+
+→ 04 Login moderador
+  POST http://127.0.0.1:8081/api/auth/login [200 OK, 751B, 212ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+
+→ 05 Login miembro
+  POST http://127.0.0.1:8081/api/auth/login [200 OK, 743B, 215ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+
+→ 06 Credenciales incorrectas
+  POST http://127.0.0.1:8081/api/auth/login [401 Unauthorized, 540B, 221ms]
+  ✓  HTTP 401
+  ✓  Respuesta JSON
+
+→ 07 Autenticacion obligatoria
+  GET http://127.0.0.1:8082/api/categorias [401 Unauthorized, 509B, 10ms]
+  ✓  HTTP 401
+  ✓  Respuesta JSON
+
+→ 08 Token manipulado
+  GET http://127.0.0.1:8082/api/categorias [401 Unauthorized, 509B, 6ms]
+  ✓  HTTP 401
+  ✓  Respuesta JSON
+
+→ 09 Mi perfil
+  GET http://127.0.0.1:8081/api/usuarios/me [200 OK, 497B, 27ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+  ✓  Rol MEMBER
+  ✓  Sin hash
+
+→ 10 Miembro no lista usuarios
+  GET http://127.0.0.1:8081/api/usuarios [403 Forbidden, 528B, 29ms]
+  ✓  HTTP 403
+  ✓  Respuesta JSON
+
+→ 11 Miembro no lee otro usuario
+  GET http://127.0.0.1:8081/api/usuarios/1 [403 Forbidden, 528B, 10ms]
+  ✓  HTTP 403
+  ✓  Respuesta JSON
+
+→ 12 Admin lista usuarios
+  GET http://127.0.0.1:8081/api/usuarios [200 OK, 969B, 23ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+
+→ 13 Tres roles
+  GET http://127.0.0.1:8081/api/roles [200 OK, 453B, 14ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+  ✓  3 roles
+
+→ 14 Cinco categorias
+  GET http://127.0.0.1:8082/api/categorias [200 OK, 800B, 180ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+  ✓  Al menos 5 categorias
+
+→ 15 Leer categoria
+  GET http://127.0.0.1:8082/api/categorias/1 [200 OK, 501B, 13ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+
+→ 16 Buscar titulo y categoria
+  GET http://127.0.0.1:8082/api/temas?q=spring&categoriaId=1&page=0&size=10 [200 OK, 994B, 50ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+  ✓  Tema encontrado
+
+→ 17 Leer tema inicial
+  GET http://127.0.0.1:8082/api/temas/1 [200 OK, 676B, 11ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+
+→ 18 Listar comentarios
+  GET http://127.0.0.1:8082/api/temas/1/comentarios [200 OK, 894B, 17ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+
+→ 19 Leer comentario inicial
+  GET http://127.0.0.1:8082/api/comentarios/1 [200 OK, 576B, 10ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+
+→ 20 Validar formulario
+  POST http://127.0.0.1:8081/api/auth/registro [400 Bad Request, 679B, 24ms]
+  ✓  HTTP 400
+  ✓  Respuesta JSON
+
+→ 21 Impedir escalada de rol
+  POST http://127.0.0.1:8081/api/auth/registro [400 Bad Request, 511B, 5ms]
+  ✓  HTTP 400
+  ✓  Respuesta JSON
+
+→ 22 Email duplicado
+  POST http://127.0.0.1:8081/api/auth/registro [409 Conflict, 531B, 7ms]
+  ✓  HTTP 409
+  ✓  Respuesta JSON
+
+→ 23 Registrar usuario temporal
+  POST http://127.0.0.1:8081/api/auth/registro [201 Created, 550B, 79ms]
+  ✓  HTTP 201
+  ✓  Respuesta JSON
+  ✓  Registro MEMBER
+
+→ 24 Login temporal
+  POST http://127.0.0.1:8081/api/auth/login [200 OK, 765B, 69ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+
+→ 25 Leer usuario creado
+  GET http://127.0.0.1:8081/api/usuarios/100 [200 OK, 516B, 7ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+
+→ 26 Actualizar perfil propio
+  PUT http://127.0.0.1:8081/api/usuarios/100 [200 OK, 519B, 20ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+  ✓  Nombre actualizado
+
+→ 27 Miembro no cambia roles
+  PUT http://127.0.0.1:8081/api/usuarios/100/rol [403 Forbidden, 528B, 11ms]
+  ✓  HTTP 403
+  ✓  Respuesta JSON
+
+→ 28 Admin cambia rol
+  PUT http://127.0.0.1:8081/api/usuarios/100/rol [200 OK, 522B, 9ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+
+→ 29 Admin restituye rol
+  PUT http://127.0.0.1:8081/api/usuarios/100/rol [200 OK, 519B, 10ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+
+→ 30 Admin protege su cuenta
+  DELETE http://127.0.0.1:8081/api/usuarios/1 [409 Conflict, 562B, 9ms]
+  ✓  HTTP 409
+  ✓  Respuesta JSON
+
+→ 31 Miembro no crea categoria
+  POST http://127.0.0.1:8082/api/categorias [403 Forbidden, 528B, 76ms]
+  ✓  HTTP 403
+  ✓  Respuesta JSON
+
+→ 32 Crear sexta categoria
+  POST http://127.0.0.1:8082/api/categorias [201 Created, 538B, 26ms]
+  ✓  HTTP 201
+  ✓  Respuesta JSON
+
+→ 33 Editar categoria
+  PUT http://127.0.0.1:8082/api/categorias/100 [200 OK, 507B, 20ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+
+→ 34 Impedir suplantacion
+  POST http://127.0.0.1:8082/api/temas [400 Bad Request, 511B, 12ms]
+  ✓  HTTP 400
+  ✓  Respuesta JSON
+
+→ 35 Categoria inexistente
+  POST http://127.0.0.1:8082/api/temas [404 Not Found, 536B, 12ms]
+  ✓  HTTP 404
+  ✓  Respuesta JSON
+
+→ 36 Publicar tema
+  POST http://127.0.0.1:8082/api/temas [201 Created, 655B, 10ms]
+  ✓  HTTP 201
+  ✓  Respuesta JSON
+  ✓  Autor tomado del token
+
+→ 37 Leer tema creado
+  GET http://127.0.0.1:8082/api/temas/100 [200 OK, 621B, 7ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+
+→ 38 Actualizar tema propio
+  PUT http://127.0.0.1:8082/api/temas/100 [200 OK, 627B, 13ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+
+→ 39 Otro miembro no edita tema
+  PUT http://127.0.0.1:8082/api/temas/100 [403 Forbidden, 582B, 10ms]
+  ✓  HTTP 403
+  ✓  Respuesta JSON
+
+→ 40 Publicar comentario
+  POST http://127.0.0.1:8082/api/temas/100/comentarios [201 Created, 590B, 15ms]
+  ✓  HTTP 201
+  ✓  Respuesta JSON
+
+→ 41 Leer comentario creado
+  GET http://127.0.0.1:8082/api/comentarios/100 [200 OK, 550B, 6ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+
+→ 42 Actualizar comentario
+  PUT http://127.0.0.1:8082/api/comentarios/100 [200 OK, 550B, 11ms]
+  ✓  HTTP 200
+  ✓  Respuesta JSON
+
+→ 43 Otro miembro no borra comentario
+  DELETE http://127.0.0.1:8082/api/comentarios/100 [403 Forbidden, 582B, 10ms]
+  ✓  HTTP 403
+  ✓  Respuesta JSON
+
+→ 44 Categoria ocupada no se elimina
+  DELETE http://127.0.0.1:8082/api/categorias/100 [409 Conflict, 539B, 13ms]
+  ✓  HTTP 409
+  ✓  Respuesta JSON
+
+→ 45 Pagina invalida
+  GET http://127.0.0.1:8082/api/temas?size=101 [400 Bad Request, 515B, 4ms]
+  ✓  HTTP 400
+  ✓  Respuesta JSON
+
+→ 46 Eliminar comentario propio
+  DELETE http://127.0.0.1:8082/api/comentarios/100 [204 No Content, 371B, 11ms]
+  ✓  HTTP 204
+
+→ 47 Comentario eliminado
+  GET http://127.0.0.1:8082/api/comentarios/100 [404 Not Found, 537B, 7ms]
+  ✓  HTTP 404
+  ✓  Respuesta JSON
+
+→ 48 Comentario para cascada
+  POST http://127.0.0.1:8082/api/temas/100/comentarios [201 Created, 592B, 8ms]
+  ✓  HTTP 201
+  ✓  Respuesta JSON
+
+→ 49 Moderador elimina tema
+  DELETE http://127.0.0.1:8082/api/temas/100 [204 No Content, 371B, 13ms]
+  ✓  HTTP 204
+
+→ 50 Tema eliminado
+  GET http://127.0.0.1:8082/api/temas/100 [404 Not Found, 531B, 7ms]
+  ✓  HTTP 404
+  ✓  Respuesta JSON
+
+→ 51 Comentario dependiente eliminado
+  GET http://127.0.0.1:8082/api/comentarios/101 [404 Not Found, 537B, 5ms]
+  ✓  HTTP 404
+  ✓  Respuesta JSON
+
+→ 52 Eliminar categoria temporal
+  DELETE http://127.0.0.1:8082/api/categorias/100 [204 No Content, 371B, 193ms]
+  ✓  HTTP 204
+
+→ 53 Conservar cinco categorias
+  DELETE http://127.0.0.1:8082/api/categorias/5 [409 Conflict, 554B, 11ms]
+  ✓  HTTP 409
+  ✓  Respuesta JSON
+
+→ 54 Eliminar usuario temporal
+  DELETE http://127.0.0.1:8081/api/usuarios/100 [204 No Content, 371B, 15ms]
+  ✓  HTTP 204
+
+→ 55 Usuario eliminado
+  GET http://127.0.0.1:8081/api/usuarios/100 [404 Not Found, 534B, 8ms]
+  ✓  HTTP 404
+  ✓  Respuesta JSON
+
+┌─────────────────────────┬───────────────────┬──────────────────┐
+│                         │          executed │           failed │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              iterations │                 1 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│                requests │                55 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│            test-scripts │                55 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│      prerequest-scripts │                55 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              assertions │               114 │                0 │
+├─────────────────────────┴───────────────────┴──────────────────┤
+│ total run duration: 2.9s                                       │
+├────────────────────────────────────────────────────────────────┤
+│ total data received: 8.18kB (approx)                           │
+├────────────────────────────────────────────────────────────────┤
+│ average response time: 41ms [min: 4ms, max: 407ms, s.d.: 75ms] │
+└────────────────────────────────────────────────────────────────┘

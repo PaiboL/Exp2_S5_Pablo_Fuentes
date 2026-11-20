@@ -1,0 +1,102 @@
+<section class="auth-layout row g-0">
+  <div class="col-lg-6 auth-story">
+    <span class="eyebrow">COMUNIDAD ACADÉMICA</span>
+    <h1>Una pregunta.<br />Muchas perspectivas.</h1>
+    <p>
+      Aprende, comparte y conecta con personas que disfrutan entender cómo
+      funcionan las cosas.
+    </p>
+    <div class="story-art" aria-hidden="true">
+      <div class="art-ring"></div>
+      <span class="art-code">&lt; / &gt;</span><span class="art-dot"></span>
+    </div>
+    <div class="story-tags">
+      <span>Programación</span><span>Automatización</span><span>Redes</span>
+    </div>
+  </div>
+  <div class="col-lg-6 auth-form">
+    <div class="form-heading">
+      <span class="eyebrow">BIENVENIDO A FORO NEXO</span>
+      <h2>
+        {{mode==='login'?'Inicia sesión':mode==='register'?'Crea tu
+        cuenta':'Recupera tu acceso'}}
+      </h2>
+      <p>
+        {{mode==='login'?'Tu próxima conversación empieza
+        aquí.':mode==='register'?'Un espacio para aprender en comunidad.':'Te
+        ayudaremos a volver a tu comunidad.'}}
+      </p>
+    </div>
+    @if(error()){
+    <div class="alert alert-danger" role="alert">{{error()}}</div>
+    }@if(notice()){
+    <div class="alert alert-success" role="status">{{notice()}}</div>
+    }
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      @if(mode==='register'){<label for="nombre">Nombre</label
+      ><input
+        id="nombre"
+        class="form-control"
+        formControlName="nombre"
+        autocomplete="name"
+        maxlength="100"
+      />@if(bad('nombre')){<small class="invalid"
+        >Ingresa tu nombre, máximo 100 caracteres.</small
+      >}} @if(!sent()){<label for="email">Correo electrónico</label
+      ><input
+        id="email"
+        class="form-control"
+        type="email"
+        formControlName="email"
+        autocomplete="email"
+        maxlength="150"
+        placeholder="nombre@ejemplo.cl"
+      />@if(bad('email')){<small class="invalid"
+        >Ingresa un correo válido.</small
+      >}} @if(sent()){<label for="token">Código recibido por correo</label
+      ><input
+        id="token"
+        class="form-control"
+        formControlName="token"
+        autocomplete="one-time-code"
+      />@if(bad('token')){<small class="invalid"
+        >Ingresa el código recibido.</small
+      >}} @if(mode!=='recover'||sent()){<label for="password"
+        >{{sent()?'Nueva contraseña':'Contraseña'}}</label
+      ><input
+        id="password"
+        class="form-control"
+        type="password"
+        formControlName="password"
+        [attr.autocomplete]="mode==='login'?'current-password':'new-password'"
+      />@if(bad('password')){<small class="invalid"
+        >Revisa los requisitos de tu contraseña.</small
+      >}} @if(mode==='register'||sent()){
+      <p class="field-help">
+        Entre 10 y 64 caracteres, con mayúscula, minúscula, número y símbolo.
+        Máximo 72 bytes UTF-8.
+      </p>
+      <label for="confirm">Confirmar contraseña</label
+      ><input
+        id="confirm"
+        class="form-control"
+        type="password"
+        formControlName="confirm"
+        autocomplete="new-password"
+      />} @if(mode==='login'){<a routerLink="/recuperar" class="forgot"
+        >Olvidé mi contraseña</a
+      >}
+      <button class="btn btn-primary w-100 mt-4" [disabled]="busy()">
+        {{busy()?'Procesando…':mode==='login'?'Entrar al
+        foro':mode==='register'?'Crear cuenta':sent()?'Cambiar
+        contraseña':'Enviar instrucciones'}}
+      </button>
+    </form>
+    <p class="auth-switch">
+      {{mode==='login'?'¿Aún no tienes cuenta?':'¿Ya tienes una cuenta?'}}
+      <a [routerLink]="mode==='login'?'/registro':'/login'"
+        >{{mode==='login'?'Regístrate':'Inicia sesión'}}</a
+      >
+    </p>
+  </div>
+</section>

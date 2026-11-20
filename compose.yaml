@@ -1,0 +1,122 @@
+name: foro-nexo
+services:
+  oracle:
+    image: gvenzl/oracle-free:23-slim
+    environment:
+      ORACLE_PASSWORD: ${ORACLE_PASSWORD:?Ejecuta python scripts/configurar.py}
+      APP_DB_PASSWORD: ${APP_DB_PASSWORD:?Falta APP_DB_PASSWORD}
+    ports:
+      - "127.0.0.1:1521:1521"
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+      - ./database:/schema:ro
+      - ./database/init:/container-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "healthcheck.sh"]
+      interval: 15s
+      timeout: 10s
+      retries: 40
+      start_period: 180s
+    restart: unless-stopped
+  mailpit:
+    image: axllent/mailpit:v1.20
+    ports:
+      - "127.0.0.1:8025:8025"
+    restart: unless-stopped
+  usuarios:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+      args:
+        SERVICE: usuarios-service
+    environment:
+      SPRING_PROFILES_ACTIVE: oracle
+      JWT_SECRET: ${JWT_SECRET:?Ejecuta python scripts/configurar.py}
+      SMTP_HOST: mailpit
+      SMTP_PORT: 1025
+      CORS_ORIGIN: http://localhost:8080
+      USUARIOS_DB_URL: jdbc:oracle:thin:@//oracle:1521/FREEPDB1
+      USUARIOS_DB_USER: USUARIOS_APP
+      USUARIOS_DB_PASSWORD: ${APP_DB_PASSWORD:?Falta APP_DB_PASSWORD}
+    ports:
+      - "127.0.0.1:8081:8081"
+    depends_on:
+      oracle:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8081/actuator/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 20
+      start_period: 60s
+    restart: unless-stopped
+  foro:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+      args:
+        SERVICE: foro-service
+    environment:
+      SPRING_PROFILES_ACTIVE: oracle
+      JWT_SECRET: ${JWT_SECRET:?Ejecuta python scripts/configurar.py}
+      CORS_ORIGIN: http://localhost:8080
+      FORO_DB_URL: jdbc:oracle:thin:@//oracle:1521/FREEPDB1
+      FORO_DB_USER: FORO_APP
+      FORO_DB_PASSWORD: ${APP_DB_PASSWORD:?Falta APP_DB_PASSWORD}
+    ports:
+      - "127.0.0.1:8082:8082"
+    depends_on:
+      oracle:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8082/actuator/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 20
+      start_period: 60s
+    restart: unless-stopped
+  moderacion:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+      args:
+        SERVICE: moderacion-service
+    environment:
+      SPRING_PROFILES_ACTIVE: oracle
+      JWT_SECRET: ${JWT_SECRET:?Ejecuta python scripts/configurar.py}
+      FORO_URL: http://foro:8082
+      CORS_ORIGIN: http://localhost:8080
+      MODERACION_DB_URL: jdbc:oracle:thin:@//oracle:1521/FREEPDB1
+      MODERACION_DB_USER: MODERACION_APP
+      MODERACION_DB_PASSWORD: ${APP_DB_PASSWORD:?Falta APP_DB_PASSWORD}
+    ports:
+      - "127.0.0.1:8083:8083"
+    depends_on:
+      oracle:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8083/actuator/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 20
+      start_period: 60s
+    restart: unless-stopped
+  frontend:
+    build: ./frontend
+    ports:
+      - "127.0.0.1:8080:80"
+    depends_on:
+      usuarios:
+        condition: service_healthy
+      foro:
+        condition: service_healthy
+      moderacion:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1/"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+volumes:
+  oracle-data:

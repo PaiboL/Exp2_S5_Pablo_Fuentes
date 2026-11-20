@@ -1,0 +1,12 @@
+{
+  "entorno": "Tres procesos Java, H2, SMTP local; no Oracle ni Docker",
+  "checks": [
+    "Tres aplicaciones Spring Boot iniciadas con perfil demo H2",
+    "Colección Postman original completa",
+    "Colección Postman S5 completa",
+    "Moderación: autenticación obligatoria y rol ADMIN",
+    "Comentario bloqueado oculto en GET individual y listado; DELETE restaura",
+    "CRUD moderación y propagación real al foro: tema oculto, respuestas rechazadas y restauración",
+    "SMTP real: respuesta genérica, código de un uso, contraseña antigua rechazada y nueva aceptada"
+  ]
+}

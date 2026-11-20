@@ -1,0 +1,29 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> foro-nexo@1.0.0 build
+> ng build
+
+❯ Building...
+✔ Building...
+Initial chunk files   | Names         |  Raw size | Estimated transfer size
+chunk-SCTYTVH5.js     | -             | 259.04 kB |                71.29 kB
+styles-T7G6QHBV.css   | styles        | 239.55 kB |                24.52 kB
+polyfills-5CFQRCPP.js | polyfills     |  34.59 kB |                11.33 kB
+main-BD2XPQPG.js      | main          |   2.90 kB |                 1.12 kB
+
+                      | Initial total | 536.08 kB |               108.26 kB
+
+Lazy chunk files      | Names         |  Raw size | Estimated transfer size
+chunk-RZZSKCYM.js     | -             |  46.31 kB |                 9.35 kB
+chunk-SD4AVFPF.js     | admin-page    |  10.22 kB |                 2.96 kB
+chunk-JQMTUEEU.js     | auth-page     |   6.80 kB |                 2.42 kB
+chunk-V23X2BNV.js     | topic-page    |   6.10 kB |                 2.14 kB
+chunk-KJQEWE4I.js     | forum-page    |   5.57 kB |                 2.20 kB
+chunk-PX5JS2OE.js     | editor-page   |   3.39 kB |                 1.50 kB
+chunk-3FMSMZAH.js     | profile-page  |   2.49 kB |                 1.10 kB
+chunk-HQGJVVVM.js     | -             |   1.68 kB |               545 bytes
+
+Application bundle generation complete. [2.475 seconds] - 2026-11-20T17:12:48.137Z
+
+Output location: /workspace/scratch/466cd3ba77a9/Exp2_S5_Pablo_Fuentes/frontend/dist/foro
+

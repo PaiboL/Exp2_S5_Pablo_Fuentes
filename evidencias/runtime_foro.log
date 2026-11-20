@@ -1,0 +1,62 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.7)
+
+2026-11-20T14:18:06.075-03:00  INFO 9 --- [foro-service] [           main] cl.duoc.foro.Application                 : Starting Application v1.0.0 using Java 21.0.13 with PID 9 (/workspace/scratch/466cd3ba77a9/Exp2_S5_Pablo_Fuentes/microservicios/foro-service/target/foro-service-1.0.0.jar started by agent in /workspace/scratch/466cd3ba77a9)
+2026-11-20T14:18:06.078-03:00  INFO 9 --- [foro-service] [           main] cl.duoc.foro.Application                 : The following 1 profile is active: "demo"
+2026-11-20T14:18:07.575-03:00  INFO 9 --- [foro-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-20T14:18:07.630-03:00  INFO 9 --- [foro-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 3 JPA repository interfaces.
+2026-11-20T14:18:08.356-03:00  INFO 9 --- [foro-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8082 (http)
+2026-11-20T14:18:08.377-03:00  INFO 9 --- [foro-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-20T14:18:08.377-03:00  INFO 9 --- [foro-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.48]
+2026-11-20T14:18:08.407-03:00  INFO 9 --- [foro-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-11-20T14:18:08.410-03:00  INFO 9 --- [foro-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2289 ms
+2026-11-20T14:18:08.908-03:00  INFO 9 --- [foro-service] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-20T14:18:08.937-03:00  INFO 9 --- [foro-service] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.33.Final
+2026-11-20T14:18:08.953-03:00  INFO 9 --- [foro-service] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-20T14:18:09.237-03:00  INFO 9 --- [foro-service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-20T14:18:09.254-03:00  INFO 9 --- [foro-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-20T14:18:09.523-03:00  INFO 9 --- [foro-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:foro user=SA
+2026-11-20T14:18:09.524-03:00  INFO 9 --- [foro-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-20T14:18:09.547-03:00  WARN 9 --- [foro-service] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-20T14:18:09.560-03:00  INFO 9 --- [foro-service] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-20T14:18:10.169-03:00  INFO 9 --- [foro-service] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-20T14:18:10.208-03:00  INFO 9 --- [foro-service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-20T14:18:11.065-03:00  INFO 9 --- [foro-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-11-20T14:18:11.334-03:00  INFO 9 --- [foro-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8082 (http) with context path '/'
+2026-11-20T14:18:11.343-03:00  INFO 9 --- [foro-service] [           main] cl.duoc.foro.Application                 : Started Application in 5.715 seconds (process running for 6.223)
+2026-11-20T14:18:12.301-03:00  INFO 9 --- [foro-service] [nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-20T14:18:12.301-03:00  INFO 9 --- [foro-service] [nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-20T14:18:12.302-03:00  INFO 9 --- [foro-service] [nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-20T14:18:14.774-03:00  WARN 9 --- [foro-service] [nio-8082-exec-7] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-11-20T14:18:15.469-03:00  INFO 9 --- [foro-service] [nio-8082-exec-6] cl.duoc.foro.service.ForoService         : Tema guardado id=100 actor=3
+2026-11-20T14:18:15.513-03:00  INFO 9 --- [foro-service] [nio-8082-exec-8] cl.duoc.foro.service.ForoService         : Tema guardado id=100 actor=3
+2026-11-20T14:18:15.753-03:00  INFO 9 --- [foro-service] [nio-8082-exec-9] cl.duoc.foro.service.ForoService         : Tema eliminado id=100 actor=2
+2026-11-20T14:18:16.996-03:00  INFO 9 --- [foro-service] [nio-8082-exec-4] cl.duoc.foro.service.ForoService         : Tema guardado id=101 actor=3
+2026-11-20T14:18:17.590-03:00  INFO 9 --- [foro-service] [nio-8082-exec-7] cl.duoc.foro.service.ForoService         : Tema eliminado id=101 actor=3
+2026-11-20T14:18:18.129-03:00  INFO 9 --- [foro-service] [nio-8082-exec-9] cl.duoc.foro.service.ForoService         : Tema guardado id=102 actor=3
+2026-11-20T14:18:18.262-03:00  INFO 9 --- [foro-service] [nio-8082-exec-2] cl.duoc.foro.service.ForoService         : Tema eliminado id=102 actor=3
+2026-11-20T14:18:19.574-03:00  INFO 9 --- [foro-service] [nio-8082-exec-7] cl.duoc.foro.service.ForoService         : Tema guardado id=103 actor=102
+2026-11-20T14:18:21.069-03:00  INFO 9 --- [foro-service] [nio-8082-exec-8] cl.duoc.foro.service.ForoService         : Tema guardado id=103 actor=102
+2026-11-20T14:18:22.450-03:00  INFO 9 --- [foro-service] [nio-8082-exec-6] cl.duoc.foro.service.ForoService         : Tema eliminado id=103 actor=1
+2026-11-20T14:18:22.950-03:00  INFO 9 --- [foro-service] [ionShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-20T14:18:22.955-03:00  INFO 9 --- [foro-service] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-11-20T14:18:22.959-03:00  INFO 9 --- [foro-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-20T14:18:22.971-03:00  INFO 9 --- [foro-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-11-20T14:18:22.976-03:00  INFO 9 --- [foro-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

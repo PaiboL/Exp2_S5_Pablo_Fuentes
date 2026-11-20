@@ -1,0 +1,98 @@
+name: foro-nexo-demo
+services:
+  mailpit:
+    image: axllent/mailpit:v1.20
+    ports:
+    - 127.0.0.1:8025:8025
+    restart: unless-stopped
+  usuarios:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+      args:
+        SERVICE: usuarios-service
+    environment:
+      SPRING_PROFILES_ACTIVE: demo
+      SMTP_HOST: mailpit
+      SMTP_PORT: 1025
+      CORS_ORIGIN: http://localhost:8080
+    ports:
+    - 127.0.0.1:8081:8081
+    healthcheck:
+      test:
+      - CMD
+      - curl
+      - -fsS
+      - http://localhost:8081/actuator/health
+      interval: 15s
+      timeout: 5s
+      retries: 20
+      start_period: 60s
+    restart: unless-stopped
+  foro:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+      args:
+        SERVICE: foro-service
+    environment:
+      SPRING_PROFILES_ACTIVE: demo
+      CORS_ORIGIN: http://localhost:8080
+    ports:
+    - 127.0.0.1:8082:8082
+    healthcheck:
+      test:
+      - CMD
+      - curl
+      - -fsS
+      - http://localhost:8082/actuator/health
+      interval: 15s
+      timeout: 5s
+      retries: 20
+      start_period: 60s
+    restart: unless-stopped
+  moderacion:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+      args:
+        SERVICE: moderacion-service
+    environment:
+      SPRING_PROFILES_ACTIVE: demo
+      FORO_URL: http://foro:8082
+      CORS_ORIGIN: http://localhost:8080
+    ports:
+    - 127.0.0.1:8083:8083
+    healthcheck:
+      test:
+      - CMD
+      - curl
+      - -fsS
+      - http://localhost:8083/actuator/health
+      interval: 15s
+      timeout: 5s
+      retries: 20
+      start_period: 60s
+    restart: unless-stopped
+  frontend:
+    build: ./frontend
+    ports:
+    - 127.0.0.1:8080:80
+    depends_on:
+      usuarios:
+        condition: service_healthy
+      foro:
+        condition: service_healthy
+      moderacion:
+        condition: service_healthy
+    healthcheck:
+      test:
+      - CMD
+      - wget
+      - -q
+      - --spider
+      - http://127.0.0.1/
+      interval: 20s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped

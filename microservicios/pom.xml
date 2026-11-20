@@ -1,0 +1,1 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"><modelVersion>4.0.0</modelVersion><groupId>cl.duoc</groupId><artifactId>foro-nexo</artifactId><version>1.0.0</version><packaging>pom</packaging><modules><module>usuarios-service</module><module>foro-service</module><module>moderacion-service</module></modules></project>

@@ -1,0 +1,8 @@
+* text=auto
+*.sh text eol=lf
+mvnw text eol=lf
+*.cmd text eol=crlf
+*.png binary
+*.docx binary
+*.jar binary
+*.bundle binary

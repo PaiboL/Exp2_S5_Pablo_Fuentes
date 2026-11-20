@@ -1,0 +1,23 @@
+{
+  "entorno": "Chromium headless, backend H2 demo, HTTP real",
+  "checks": [
+    "Registro desde formulario Angular",
+    "Inicio de sesión y catálogo de cinco categorías",
+    "Diseño sin desborde a 375 px",
+    "Diseño sin desborde a 768 px",
+    "Diseño sin desborde a 1280 px",
+    "Creación de tema persistido mediante API",
+    "Creación y edición de comentario",
+    "Edición de tema",
+    "Modificación de perfil",
+    "Guard de administración rechaza miembro",
+    "Administrador bloquea tema a través del tercer servicio",
+    "Tema bloqueado no se expone por enlace directo",
+    "Restauración de contenido",
+    "Administración de categorías",
+    "Eliminación de comentario y tema",
+    "Recuperación con correo local, cambio e inicio con nueva contraseña",
+    "Sin errores JavaScript no controlados"
+  ],
+  "errors": []
+}

@@ -1,0 +1,102 @@
+<section class="page-hero">
+  <div>
+    <span class="eyebrow">EXPLORA · PREGUNTA · COMPARTE</span>
+    <h1>Ideas que conectan.</h1>
+    <p>
+      Encuentra una conversación, comparte tu experiencia y aprende algo nuevo.
+    </p>
+  </div>
+  <a class="btn btn-primary" routerLink="/temas/nuevo">+ Publicar un tema</a>
+</section>
+<div class="row g-4">
+  <aside class="col-lg-3">
+    <div class="panel categories">
+      <span class="eyebrow">TUS COMUNIDADES</span
+      ><button
+        class="category-item"
+        [class.selected]="!category"
+        (click)="category='';search()"
+      >
+        <span class="cat-icon">◎</span> Todos los temas</button
+      >@for(c of f.categories();track c.id){<button
+        class="category-item"
+        [class.selected]="category===c.id.toString()"
+        (click)="select(c.id)"
+      >
+        <span class="cat-icon"
+          >{{c.id===1?'⌘':c.id===2?'▤':c.id===3?'⚙':c.id===4?'↔':'◇'}}</span
+        >{{c.nombre}}</button
+      >}
+    </div>
+    <div class="community-note">
+      <h3>Un buen lugar para preguntar</h3>
+      <p>
+        Comparte con respeto. Da contexto a tus preguntas y reconoce las ideas
+        de los demás.
+      </p>
+    </div>
+  </aside>
+  <section class="col-lg-9">
+    <form class="search-bar" (ngSubmit)="search()">
+      <label for="buscar" class="visually-hidden">Buscar temas</label
+      ><input
+        class="form-control"
+        id="buscar"
+        name="q"
+        [(ngModel)]="q"
+        maxlength="150"
+        placeholder="Buscar una conversación…"
+      /><button class="btn btn-dark">Buscar</button>
+    </form>
+    <div class="list-heading">
+      <h2>Conversaciones</h2>
+      <span>{{f.total()}} temas</span>
+    </div>
+    @if(f.loading()){
+    <p role="status">Cargando conversaciones…</p>
+    }@if(f.error()){
+    <div class="alert alert-danger" role="alert">
+      {{f.error()}}
+      <button class="btn btn-sm btn-outline-dark" (click)="load()">
+        Reintentar
+      </button>
+    </div>
+    } @for(t of f.topics();track t.id){
+    <article class="topic-card">
+      <div class="topic-avatar">{{t.categoria.slice(0,1)}}</div>
+      <div class="topic-main">
+        <span class="pill">{{t.categoria}}</span>
+        <h3><a [routerLink]="['/temas',t.id]">{{t.titulo}}</a></h3>
+        <p>{{t.contenido.slice(0,155)}}{{t.contenido.length>155?'…':''}}</p>
+        <div class="meta">
+          Miembro #{{t.autorId}} <span>·</span> {{t.creadoEn|date:'dd/MM/yyyy
+          HH:mm'}}
+        </div>
+      </div>
+      <span class="topic-arrow" aria-hidden="true">↗</span>
+    </article>
+    }@empty{ @if(!f.loading()&&!f.error()){
+    <div class="empty-state">
+      <h3>Esta conversación aún no empieza</h3>
+      <p>Prueba otra búsqueda o publica el primer tema.</p>
+    </div>
+    }} @if(f.pages()>1){
+    <nav aria-label="Páginas" class="pagination-bar">
+      <button
+        class="btn btn-outline-dark"
+        (click)="change(-1)"
+        [disabled]="page===0"
+      >
+        Anterior</button
+      ><span>{{page+1}} / {{f.pages()}}</span
+      ><button
+        class="btn btn-outline-dark"
+        (click)="change(1)"
+        [disabled]="page+1>=f.pages()"
+      >
+        Siguiente
+      </button>
+    </nav>
+    }
+  </section>
+</div>

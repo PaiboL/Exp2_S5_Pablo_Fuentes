@@ -1,0 +1,42 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: usuarios-service
+  profiles:
+    default: oracle
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+  servlet:
+    multipart:
+      enabled: false
+app:
+  jwt-secret: ${JWT_SECRET}
+  cors-origin: ${CORS_ORIGIN:http://localhost:4200}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+logging:
+  level:
+    root: INFO
+    cl.duoc: INFO
+
+---
+spring:
+  mail:
+    host: ${SMTP_HOST:localhost}
+    port: ${SMTP_PORT:1025}
+    properties:
+      mail.smtp.connectiontimeout: 5000
+      mail.smtp.timeout: 5000
+      mail.smtp.writetimeout: 5000

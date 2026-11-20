@@ -1,0 +1,33 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: moderacion-service
+  profiles:
+    default: oracle
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+  servlet:
+    multipart:
+      enabled: false
+app:
+  foro-url: ${FORO_URL:http://localhost:8082}
+  jwt-secret: ${JWT_SECRET}
+  cors-origin: ${CORS_ORIGIN:http://localhost:4200}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+logging:
+  level:
+    root: INFO
+    cl.duoc: INFO

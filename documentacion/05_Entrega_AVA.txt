@@ -1,0 +1,12 @@
+Pablo Fuentes
+DSY2205 Desarrollo Full Stack III
+Experiencia 2 Semana 5
+Proyecto Foro Nexo
+
+Archivo: Exp2_S5_Pablo_Fuentes.zip
+Repositorio y rama de la entrega:
+https://github.com/PaiboL/Exp2_S5_Pablo_Fuentes/tree/entrega-dsy2205-s5
+
+Video Kaltura: PENDIENTE DE GRABAR Y PEGAR ENLACE REAL
+
+Antes de enviar: comprobar ejecución Docker con Oracle y persistencia, anexar evidencias reales y verificar acceso al video de 7 a 10 minutos.

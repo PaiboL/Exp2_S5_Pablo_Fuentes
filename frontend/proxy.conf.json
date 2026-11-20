@@ -1,0 +1,38 @@
+{
+  "/api/auth": {
+    "target": "http://127.0.0.1:8081",
+    "secure": false
+  },
+  "/api/auth/**": {
+    "target": "http://127.0.0.1:8081",
+    "secure": false
+  },
+  "/api/usuarios": {
+    "target": "http://127.0.0.1:8081",
+    "secure": false
+  },
+  "/api/usuarios/**": {
+    "target": "http://127.0.0.1:8081",
+    "secure": false
+  },
+  "/api/roles": {
+    "target": "http://127.0.0.1:8081",
+    "secure": false
+  },
+  "/api/roles/**": {
+    "target": "http://127.0.0.1:8081",
+    "secure": false
+  },
+  "/api/moderaciones": {
+    "target": "http://127.0.0.1:8083",
+    "secure": false
+  },
+  "/api/moderaciones/**": {
+    "target": "http://127.0.0.1:8083",
+    "secure": false
+  },
+  "/api/**": {
+    "target": "http://127.0.0.1:8082",
+    "secure": false
+  }
+}

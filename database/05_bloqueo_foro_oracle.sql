@@ -1,0 +1,2 @@
+ALTER TABLE fo_temas ADD bloqueado NUMBER(1,0) DEFAULT 0 NOT NULL;
+ALTER TABLE fo_comentarios ADD bloqueado NUMBER(1,0) DEFAULT 0 NOT NULL;

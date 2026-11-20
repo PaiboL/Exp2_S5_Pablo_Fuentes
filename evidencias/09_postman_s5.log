@@ -1,0 +1,107 @@
+(node:290) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+(Use `node --trace-deprecation ...` to show where the warning was created)
+newman
+
+Foro Nexo S5 - Moderación y recuperación
+
+→ Login admin
+  POST http://127.0.0.1:8081/api/auth/login [200 OK, 742B, 223ms]
+  ✓  HTTP 200
+
+→ Login miembro
+  POST http://127.0.0.1:8081/api/auth/login [200 OK, 743B, 211ms]
+  ✓  HTTP 200
+
+→ Miembro no administra moderación
+  GET http://127.0.0.1:8083/api/moderaciones [403 Forbidden, 528B, 69ms]
+  ✓  HTTP 403
+
+→ Crear tema de moderación
+  POST http://127.0.0.1:8082/api/temas [201 Created, 655B, 10ms]
+  ✓  HTTP 201
+
+→ Crear comentario
+  POST http://127.0.0.1:8082/api/temas/101/comentarios [201 Created, 591B, 8ms]
+  ✓  HTTP 201
+
+→ Bloquear comentario
+  POST http://127.0.0.1:8083/api/moderaciones [201 Created, 605B, 248ms]
+  ✓  HTTP 201
+
+→ Comentario oculto
+  GET http://127.0.0.1:8082/api/comentarios/102 [404 Not Found, 537B, 7ms]
+  ✓  HTTP 404
+
+→ Eliminar decisión restaura
+  DELETE http://127.0.0.1:8083/api/moderaciones/1 [204 No Content, 371B, 34ms]
+  ✓  HTTP 204
+
+→ Comentario visible
+  GET http://127.0.0.1:8082/api/comentarios/102 [200 OK, 550B, 7ms]
+  ✓  HTTP 200
+
+→ Bloquear tema
+  POST http://127.0.0.1:8083/api/moderaciones [201 Created, 595B, 20ms]
+  ✓  HTTP 201
+
+→ Consultar decisiones
+  GET http://127.0.0.1:8083/api/moderaciones [200 OK, 558B, 13ms]
+  ✓  HTTP 200
+
+→ Consultar decisión por ID
+  GET http://127.0.0.1:8083/api/moderaciones/2 [200 OK, 556B, 11ms]
+  ✓  HTTP 200
+  ✓  Bloqueado
+
+→ Tema oculto
+  GET http://127.0.0.1:8082/api/temas/101 [404 Not Found, 531B, 7ms]
+  ✓  HTTP 404
+
+→ No comentar tema bloqueado
+  POST http://127.0.0.1:8082/api/temas/101/comentarios [404 Not Found, 531B, 10ms]
+  ✓  HTTP 404
+
+→ Restaurar tema con PUT
+  PUT http://127.0.0.1:8083/api/moderaciones/2 [200 OK, 564B, 46ms]
+  ✓  HTTP 200
+
+→ Tema visible
+  GET http://127.0.0.1:8082/api/temas/101 [200 OK, 621B, 6ms]
+  ✓  HTTP 200
+
+→ Eliminar decisión
+  DELETE http://127.0.0.1:8083/api/moderaciones/2 [204 No Content, 371B, 17ms]
+  ✓  HTTP 204
+
+→ Limpiar tema y comentarios
+  DELETE http://127.0.0.1:8082/api/temas/101 [204 No Content, 371B, 9ms]
+  ✓  HTTP 204
+
+→ Código de recuperación inválido
+  POST http://127.0.0.1:8081/api/auth/restablecer [400 Bad Request, 513B, 20ms]
+  ✓  HTTP 400
+
+→ Recuperación sin revelar existencia
+  POST http://127.0.0.1:8081/api/auth/recuperar [200 OK, 496B, 15ms]
+  ✓  HTTP 200
+  ✓  Respuesta genérica
+
+┌─────────────────────────┬───────────────────┬──────────────────┐
+│                         │          executed │           failed │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              iterations │                 1 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│                requests │                20 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│            test-scripts │                20 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│      prerequest-scripts │                 0 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              assertions │                22 │                0 │
+├─────────────────────────┴───────────────────┴──────────────────┤
+│ total run duration: 1225ms                                     │
+├────────────────────────────────────────────────────────────────┤
+│ total data received: 2.58kB (approx)                           │
+├────────────────────────────────────────────────────────────────┤
+│ average response time: 49ms [min: 6ms, max: 248ms, s.d.: 76ms] │
+└────────────────────────────────────────────────────────────────┘
